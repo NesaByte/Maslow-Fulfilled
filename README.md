@@ -1,16 +1,39 @@
-# my_needs
+# MOSLOW's: MyNeeds
 
-A new Flutter application.
+## What is Moslow's Hierarchy of needs?
+- "A Theory of Human Motivation" : Maslow’s theory encompasses his observations and ideas on human needs and motivation.
+![needs](https://2ij7hk3p1vra3uhoox411gzf-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/maslow-1024x724.jpg)
 
-## Getting Started
+## The aim of MyNeeds app
+ - This app helps us reflect our journey to a fullfill life. 
+ - It captures certain facets of an individual’s personality.
+ - Provides a basic path for self-improvement.
+ - Offers a general framework people can use to better themselves.
 
-This project is a starting point for a Flutter application.
+## Current app
+| Home Page | Calendar Page|
+|:---:|:---:|
+| ![](https://cdn.discordapp.com/attachments/766377851510980628/773991368342634597/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/773991616369131590/unknown.png) |
 
-A few resources to get you started if this is your first Flutter project:
+## Contributors are needed!
+Check out the Issues or make your own issues.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Step 1: Fork and clone the repository
+```
+git clone https://github.com/'your username'/Moslow_MyNeeds.git
+```
+### Step 2: Run the app
+```sh
+// change directories
+cd Yoga-Guru
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+// gets all the dependencies
+flutter pub get
+
+// run the app
+flutter run
+```
+
+Send your pull request and lets see the magic happen!
+
+
