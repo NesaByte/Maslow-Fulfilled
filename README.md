@@ -24,9 +24,6 @@ git clone https://github.com/'your username'/Moslow_MyNeeds.git
 ```
 ### Step 2: Run the app
 ```sh
-// change directories
-cd Yoga-Guru
-
 // gets all the dependencies
 flutter pub get
 
