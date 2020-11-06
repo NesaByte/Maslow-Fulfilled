@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_needs/home.dart';
 import 'package:my_needs/calendar.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 void main() {
   runApp(MyApp());
@@ -28,7 +29,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -38,26 +38,12 @@ class MyHomePage extends StatelessWidget {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text('Moslows: MyNeeds'),
-        //backgroundColor: NColors.nRed,
-        bottom: TabBar(
-          isScrollable: true,
-          tabs: [
-            Tab(text: 'Home'),
-            Tab(text: 'Calendar'),
-          ],
-        ),
-      ),
-      body: TabBarView(
-        children: <Widget>[
-          Home(),
-          Calendar(),
+      bottomNavigationBar: CurvedNavigationBar(
+        items: <Widget>[
+          Icon(Icons.home, size: 30),
+          Icon(Icons.calendar_today, size: 30),
         ],
       ),
     );
-
   }
-  }
-
+}
