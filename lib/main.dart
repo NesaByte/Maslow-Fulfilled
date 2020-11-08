@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_needs/home.dart';
 import 'package:my_needs/calendar.dart';
-import 'package:my_needs/test.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,9 +18,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       home: DefaultTabController(
-        length: 3,
+        length: 2,
         child: MyHomePage(),
-        //child: HomePage(),
       ),
       debugShowCheckedModeBanner: false,
     );
@@ -42,13 +40,11 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         title: Text('Moslows: MyNeeds'),
-        //backgroundColor: NColors.nRed,
         bottom: TabBar(
           isScrollable: true,
           tabs: [
             Tab(text: 'Home'),
             Tab(text: 'Calendar'),
-            Tab(text: 'Test'),
           ],
         ),
       ),
@@ -56,7 +52,6 @@ class MyHomePage extends StatelessWidget {
         children: <Widget>[
           Home(),
           Calendar(),
-          test(),
         ],
       ),
     );
