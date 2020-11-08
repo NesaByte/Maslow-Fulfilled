@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:my_needs/json_data.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -45,6 +46,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     print('CALLBACK: _onCalendarCreated');
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,41 +54,61 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           _buildTableCalendar(),
-          Expanded(child: _buildUserGrowth(25, 35, 75, 95, 50)),
+          Expanded(child: _buildBody()),
         ],
       ),
     );
   }
 
-  // Simple TableCalendar configuration (using Styles)
-  Widget _buildTableCalendar() {
-    return TableCalendar(
-      calendarController: _calendarController,
-      //events: _actions,
-      //holidays: _holidays,
-      startingDayOfWeek: StartingDayOfWeek.sunday,
-      calendarStyle: CalendarStyle(
-        selectedColor: Theme.of(context).primaryColor,
-        todayColor: Colors.pinkAccent,
-        markersColor: Colors.brown[700],
-        outsideDaysVisible: false,
-        contentPadding: const EdgeInsets.only(bottom: 0, left: 0, right: 0),
-      ),
-      headerStyle: HeaderStyle(
-        formatButtonTextStyle:
-            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
-        formatButtonDecoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-      ),
-      onDaySelected: _onDaySelected,
-      onVisibleDaysChanged: _onVisibleDaysChanged,
-      onCalendarCreated: _onCalendarCreated,
-    );
+  Widget _buildBody() {
+    return _buildList(data_test);
   }
 
-  Widget _buildUserGrowth(int actualization, int esteem, int belonging, int safety, int physiological) {
+  Widget _buildList(List<Map<String, dynamic>> dataList) {
+    return ListView.builder(
+        padding: const EdgeInsets.all(18.0),
+        itemCount: dataList.length,
+        itemBuilder: (context, i) {
+          //if(dataList[context."mdate"].toString() == "2020-11-25") {
+          return _buildUserGrowth(dataList[i]);}
+          //else
+          //  return null;
+       // }
+    );
+  }
+  Widget _buildUserGrowth(Map<String, dynamic> data) {
+
+      return Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
+            child: new LinearPercentIndicator(
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width - 140,
+              animation: true,
+              lineHeight: 20.0,
+              center: new Text(data["name"]),
+              animationDuration: 2500,
+              percent: int.parse(data["score"].toString()) / 100,
+              leading: Text(data["score"].toString() + "% "),
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              progressColor: Theme
+                  .of(context)
+                  .primaryColor,
+            ),
+          ),
+        ],
+      );
+    /*}
+    else{
+      return Column(
+          children: <Widget>[
+          Text('No Data'),
+    ]
+      );
+    }
     return Column(
       children: <Widget>[
         Padding(
@@ -160,6 +182,35 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
           ),
         ),
       ],
+    );*/
+  }
+
+
+  // Simple TableCalendar configuration (using Styles)
+  Widget _buildTableCalendar() {
+    return TableCalendar(
+      calendarController: _calendarController,
+      //events: _actions,
+      //holidays: _holidays,
+      startingDayOfWeek: StartingDayOfWeek.sunday,
+      calendarStyle: CalendarStyle(
+        selectedColor: Theme.of(context).primaryColor,
+        todayColor: Colors.pinkAccent,
+        markersColor: Colors.brown[700],
+        outsideDaysVisible: false,
+        contentPadding: const EdgeInsets.only(bottom: 0, left: 0, right: 0),
+      ),
+      headerStyle: HeaderStyle(
+        formatButtonTextStyle:
+        TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+        formatButtonDecoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+      ),
+      onDaySelected: _onDaySelected,
+      onVisibleDaysChanged: _onVisibleDaysChanged,
+      onCalendarCreated: _onCalendarCreated,
     );
   }
 }

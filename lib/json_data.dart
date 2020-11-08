@@ -3,7 +3,7 @@
  * Quest: later will be replaced by retrieving from the database;
  */
 
-List data_karate=[
+final data_tester=[
   {
     "mdate": "2020-10-15",
     "actualization": 20,
@@ -21,4 +21,12 @@ List data_karate=[
     "safety": 35,
     "physiological": 35,
   },
+];
+
+final data_test=[
+  {"mdate": "2020-11-25", "name": "Actualization", "score": 60},
+  {"mdate": "2020-11-25", "name": "Esteem", "score": 70},
+  {"mdate": "2020-11-25", "name": "Belonging", "score": 80},
+  {"mdate": "2020-11-25", "name": "Safety", "score": 90},
+  {"mdate": "2020-11-15", "name": "Physiological", "score": 100},
 ];
