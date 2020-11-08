@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_needs/home.dart';
 import 'package:my_needs/calendar.dart';
+import 'package:my_needs/test.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
       ),
       home: DefaultTabController(
-        length: 2,
+        length: 3,
         child: MyHomePage(),
         //child: HomePage(),
       ),
@@ -47,6 +48,7 @@ class MyHomePage extends StatelessWidget {
           tabs: [
             Tab(text: 'Home'),
             Tab(text: 'Calendar'),
+            Tab(text: 'Test'),
           ],
         ),
       ),
@@ -54,6 +56,7 @@ class MyHomePage extends StatelessWidget {
         children: <Widget>[
           Home(),
           Calendar(),
+          test(),
         ],
       ),
     );
