@@ -61,13 +61,19 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     );
   }
 
-  Color colorConvert(String color) {
-    color = color.replaceAll("#", "");
-    if (color.length == 6) {
-      return Color(int.parse("0xFF"+color));
-    } else if (color.length == 8) {
-      return Color(int.parse("0x"+color));
-    }
+  Color colorConvert(String name) {
+    if(name == "Actualization"){
+      return Color(0xFFFF0000);
+    }else if(name == "Esteem"){
+      return Color(0xFFFF8000);
+    }else if(name == "Belonging"){
+      return Color(0xFF8000ff);
+    }else if(name == "Safety"){
+      return Color(0xFF0080ff);
+    }else if(name == "Physiological"){
+      return Color(0xFF40ff00);
+    }else
+      return Color(0xFF000000	);
   }
 
   Widget _buildBody() {
@@ -104,7 +110,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
               percent: int.parse(data["score"].toString()) / 100,
               trailing: Text(" " + data["score"].toString() + "% "),
               linearStrokeCap: LinearStrokeCap.roundAll,
-              progressColor: colorConvert(data["color"]),
+              progressColor: colorConvert(data["name"]),
             ),
           ),
         ],

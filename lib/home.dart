@@ -11,26 +11,6 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    switch (index) {
-      case 0:
-        Navigator.pushNamed(context, Home.id);
-        break;
-      case 1:
-        Navigator.pushNamed(context, Calendar.id);
-        break;
-      case 2:
-        Navigator.pushNamed(context, Test.id);
-        break;
-    }
-
-    setState(() {
-      _selectedIndex = 0;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     int percnt = 80;

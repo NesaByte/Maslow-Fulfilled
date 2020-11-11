@@ -24,9 +24,9 @@ final data_tester=[
 ];
 
 final data_test=[
-  {"mdate": "2020-11-25", "name": "Actualization",  "score": 60,  "color": "FF0000"},
-  {"mdate": "2020-11-25", "name": "Esteem",         "score": 70,  "color": "FF8000"},
-  {"mdate": "2020-11-25", "name": "Belonging",      "score": 80,  "color": "8000ff"},
-  {"mdate": "2020-11-25", "name": "Safety",         "score": 90,  "color": "0080ff"},
-  {"mdate": "2020-11-15", "name": "Physiological",  "score": 100, "color": "40ff00"},
+  {"mdate": "2020-11-25", "name": "Actualization",  "score": 60},
+  {"mdate": "2020-11-25", "name": "Esteem",         "score": 70},
+  {"mdate": "2020-11-25", "name": "Belonging",      "score": 80},
+  {"mdate": "2020-11-25", "name": "Safety",         "score": 90},
+  {"mdate": "2020-11-15", "name": "Physiological",  "score": 100},
 ];
