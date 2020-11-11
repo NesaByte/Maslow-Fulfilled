@@ -13,7 +13,7 @@
 ## Current app
 | Home Page | Calendar Page|
 |:---:|:---:|
-| ![](https://cdn.discordapp.com/attachments/766377851510980628/773991368342634597/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/773991616369131590/unknown.png) |
+| ![](https://cdn.discordapp.com/attachments/766377851510980628/776188189424484352/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/776188238359822346/unknown.png) |
 
 ## Contributors are needed!
 Check out the Issues or make your own issues.
