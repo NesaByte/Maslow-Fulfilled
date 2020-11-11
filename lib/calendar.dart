@@ -54,9 +54,8 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       child: Column(
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text("Test"),
-          //_buildTableCalendar(),
-          //Expanded(child: _buildBody()),
+          _buildTableCalendar(),
+          Expanded(child: _buildBody()),
         ],
       ),
     );
@@ -95,7 +94,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
               center: new Text(data["name"]),
               animationDuration: 2500,
               percent: int.parse(data["score"].toString()) / 100,
-              leading: Text(data["score"].toString() + "% "),
+              trailing: Text(data["score"].toString() + "% "),
               linearStrokeCap: LinearStrokeCap.roundAll,
               progressColor: Theme
                   .of(context)

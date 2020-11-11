@@ -74,33 +74,6 @@ class HomeState extends State<Home> {
               ),
             ),
           ])),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.business,
-            ),
-            label: 'Calendar',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.flag,
-            ),
-            label: 'Test',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.red,
-        unselectedItemColor: Color(0xffCFCBD9),
-        selectedIconTheme: IconThemeData(color: Colors.red),
-        unselectedIconTheme: IconThemeData(color: Color(0xffCFCBD9)),
-        onTap: _onItemTapped,
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
     );
   }
 }
