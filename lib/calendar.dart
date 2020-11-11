@@ -4,6 +4,7 @@ import 'package:table_calendar/table_calendar.dart';
 import 'package:my_needs/json_data.dart';
 
 class Calendar extends StatefulWidget {
+  static const String id = 'calendar';
   @override
   CalendarState createState() => CalendarState();
 }
@@ -51,10 +52,11 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        //crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _buildTableCalendar(),
-          Expanded(child: _buildBody()),
+          Text("Test"),
+          //_buildTableCalendar(),
+          //Expanded(child: _buildBody()),
         ],
       ),
     );
@@ -76,6 +78,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
        // }
     );
   }
+
   Widget _buildUserGrowth(Map<String, dynamic> data) {
 
       return Column(
@@ -185,9 +188,9 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     );*/
   }
 
-
   // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
+
     return TableCalendar(
       calendarController: _calendarController,
       //events: _actions,
@@ -198,7 +201,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         todayColor: Colors.pinkAccent,
         markersColor: Colors.brown[700],
         outsideDaysVisible: false,
-        contentPadding: const EdgeInsets.only(bottom: 0, left: 0, right: 0),
+        //contentPadding: const EdgeInsets.only(bottom: 0, left: 0, right: 0),
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
