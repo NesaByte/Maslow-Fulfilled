@@ -5,6 +5,7 @@ import 'package:my_needs/json_data.dart';
 
 class Calendar extends StatefulWidget {
   static const String id = 'calendar';
+
   @override
   CalendarState createState() => CalendarState();
 }
@@ -12,6 +13,8 @@ class Calendar extends StatefulWidget {
 class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   CalendarController _calendarController;
   AnimationController _animationController;
+  final _selectedDay = DateTime.now();
+  String pickedDay = "";
 
   @override
   void initState() {
@@ -33,20 +36,25 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   }
 
   void _onDaySelected(DateTime day, List events, List Holiday) {
-    print('CALLBACK: _onDaySelected');
-    setState(() {});
+    print('CALLBACK: _onDaySelected' + day.toString());
+    setState(() {
+      pickedDay = day.toString();
+    });
   }
 
-  void _onVisibleDaysChanged(
-      DateTime first, DateTime last, CalendarFormat format) {
+  void _onVisibleDaysChanged(DateTime first, DateTime last,
+      CalendarFormat format) {
     print('CALLBACK: _onVisibleDaysChanged');
   }
 
-  void _onCalendarCreated(
-      DateTime first, DateTime last, CalendarFormat format) {
+  void _onCalendarCreated(DateTime first, DateTime last,
+      CalendarFormat format) {
     print('CALLBACK: _onCalendarCreated');
   }
 
+  String testDate(String day){
+    return day;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,18 +70,18 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   }
 
   Color colorConvert(String name) {
-    if(name == "Actualization"){
+    if (name == "Actualization") {
       return Color(0xFFFF0000);
-    }else if(name == "Esteem"){
+    } else if (name == "Esteem") {
       return Color(0xFFFF8000);
-    }else if(name == "Belonging"){
+    } else if (name == "Belonging") {
       return Color(0xFF8000ff);
-    }else if(name == "Safety"){
+    } else if (name == "Safety") {
       return Color(0xFF0080ff);
-    }else if(name == "Physiological"){
+    } else if (name == "Physiological") {
       return Color(0xFF40ff00);
-    }else
-      return Color(0xFF000000	);
+    } else
+      return Color(0xFF000000);
   }
 
   Widget _buildBody() {
@@ -86,17 +94,30 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         itemCount: dataList.length,
         itemBuilder: (context, i) {
           //if(dataList[context."mdate"].toString() == "2020-11-25") {
-          return _buildUserGrowth(dataList[i]);}
-          //else
-          //  return null;
-       // }
+          return _buildUserGrowth(dataList[i]);
+        }
+      //else
+      //  return null;
+      // }
     );
   }
 
   Widget _buildUserGrowth(Map<String, dynamic> data) {
-      return Column(
-        children: <Widget>[
-          Padding(
+    String date;
+    String sdate;
+
+    if (pickedDay != "") {
+      sdate = pickedDay.substring(0, 10);
+    }
+    else if (_selectedDay != null){
+      date = _selectedDay.toString();
+      sdate = date.substring(0, 10);
+    }
+
+
+    return Column( children: <Widget>[
+        if (sdate == data["mdate"])
+          new Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
             child: new LinearPercentIndicator(
               width: MediaQuery
@@ -113,102 +134,26 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
               progressColor: colorConvert(data["name"]),
             ),
           ),
+
         ],
-      );
-    /*}
-    else{
-      return Column(
-          children: <Widget>[
-          Text('No Data'),
-    ]
-      );
-    }
-    return Column(
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 3),
-          child: new LinearPercentIndicator(
-            width: MediaQuery.of(context).size.width - 140,
-            animation: true,
-            lineHeight: 20.0,
-            center: new Text("SELF ACTUALIZATION"),
-            animationDuration: 2500,
-            percent: actualization / 100,
-            leading: Text(actualization.toString() + "% "),
-            linearStrokeCap: LinearStrokeCap.roundAll,
-            progressColor: Colors.red,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 3),
-          child: new LinearPercentIndicator(
-            width: MediaQuery.of(context).size.width - 140,
-            animation: true,
-            lineHeight: 20.0,
-            center: new Text("ESTEEM"),
-            animationDuration: 2500,
-            percent: esteem / 100,
-            leading: Text(esteem.toString() + "% "),
-            linearStrokeCap: LinearStrokeCap.roundAll,
-            progressColor: Colors.orange,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 3),
-          child: new LinearPercentIndicator(
-            width: MediaQuery.of(context).size.width - 140,
-            animation: true,
-            lineHeight: 20.0,
-            center: new Text("BELONGING"),
-            animationDuration: 2500,
-            percent: belonging / 100,
-            leading: Text(belonging.toString() + "% "),
-            linearStrokeCap: LinearStrokeCap.roundAll,
-            progressColor: Colors.deepPurple,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 3),
-          child: new LinearPercentIndicator(
-            width: MediaQuery.of(context).size.width - 140,
-            animation: true,
-            lineHeight: 20.0,
-            center: new Text("SAFETY"),
-            animationDuration: 2500,
-            percent: safety / 100,
-            leading: Text(safety.toString() + "% "),
-            linearStrokeCap: LinearStrokeCap.roundAll,
-            progressColor: Colors.blue,
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 3),
-          child: new LinearPercentIndicator(
-            width: MediaQuery.of(context).size.width - 140,
-            animation: true,
-            lineHeight: 20.0,
-            center: new Text("PHYSIOLOGICAL"),
-            animationDuration: 2500,
-            percent: physiological / 100,
-            leading: Text(physiological.toString() + "% "),
-            linearStrokeCap: LinearStrokeCap.roundAll,
-            progressColor: Colors.green,
-          ),
-        ),
-      ],
-    );*/
+
+    );
+
+
+
   }
 
   // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
-
     return TableCalendar(
       calendarController: _calendarController,
       //events: _actions,
       //holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: CalendarStyle(
-        selectedColor: Theme.of(context).primaryColor,
+        selectedColor: Theme
+            .of(context)
+            .primaryColor,
         todayColor: Colors.pinkAccent,
         markersColor: Colors.brown[700],
         outsideDaysVisible: false,
@@ -218,7 +163,9 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         formatButtonTextStyle:
         TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
+          color: Theme
+              .of(context)
+              .primaryColor,
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
