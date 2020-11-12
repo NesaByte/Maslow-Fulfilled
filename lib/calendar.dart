@@ -138,9 +138,6 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         ],
 
     );
-
-
-
   }
 
   // Simple TableCalendar configuration (using Styles)
