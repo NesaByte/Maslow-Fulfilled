@@ -4,7 +4,7 @@
 - "A Theory of Human Motivation" : Maslow’s theory encompasses his observations and ideas on human needs and motivation.
 ![needs](https://2ij7hk3p1vra3uhoox411gzf-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/maslow-1024x724.jpg)
 
-## The aim of MyNeeds app
+## The aim of MaslowFullfilled app
  - This app helps us reflect our journey to a fullfill life. 
  - It captures certain facets of an individual’s personality.
  - Provides a basic path for self-improvement.
