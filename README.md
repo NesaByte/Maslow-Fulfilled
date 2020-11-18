@@ -1,4 +1,4 @@
-# MOSLOW's: MyNeeds
+# MASLOW-FULLFILLED
 
 ## What is Moslow's Hierarchy of needs?
 - "A Theory of Human Motivation" : Maslow’s theory encompasses his observations and ideas on human needs and motivation.
