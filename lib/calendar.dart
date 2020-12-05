@@ -15,6 +15,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   AnimationController _animationController;
   final _selectedDay = DateTime.now();
   String pickedDay = "";
+  Map<DateTime, List> _events;
 
   @override
   void initState() {
@@ -26,6 +27,33 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 400),
     );
     _animationController.forward();
+
+    /**/ _events = {
+      DateTime(2020, 11, 11): ['Actualization'],
+      DateTime(2020, 12, 11): ['Esteem'],
+      DateTime(2020, 11, 11): ['Belonging'],
+      DateTime(2020, 11, 11): ['Safety'],
+      DateTime(2020, 11, 11): ['Physiological'],
+
+      DateTime(2020, 11, 13): ['Actualization'],
+      DateTime(2020, 12, 13): ['Esteem'],
+      DateTime(2020, 11, 13): ['Belonging'],
+      DateTime(2020, 11, 13): ['Safety'],
+      DateTime(2020, 11, 13): ['Physiological'],
+
+      DateTime(2020, 11, 21): ['Actualization'],
+      DateTime(2020, 12, 21): ['Esteem'],
+      DateTime(2020, 11, 21): ['Belonging'],
+      DateTime(2020, 11, 21): ['Safety'],
+      DateTime(2020, 11, 21): ['Physiological'],
+
+      DateTime(2020, 11, 30): ['Actualization'],
+      DateTime(2020, 12, 30): ['Esteem'],
+      DateTime(2020, 11, 30): ['Belonging'],
+      DateTime(2020, 11, 30): ['Safety'],
+      DateTime(2020, 11, 30): ['Physiological'],
+    };
+
   }
 
   @override
@@ -93,12 +121,8 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         padding: const EdgeInsets.all(18.0),
         itemCount: dataList.length,
         itemBuilder: (context, i) {
-          //if(dataList[context."mdate"].toString() == "2020-11-25") {
           return _buildUserGrowth(dataList[i]);
         }
-      //else
-      //  return null;
-      // }
     );
   }
 
@@ -144,7 +168,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   Widget _buildTableCalendar() {
     return TableCalendar(
       calendarController: _calendarController,
-      //events: _actions,
+      events: _events,
       //holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: CalendarStyle(
