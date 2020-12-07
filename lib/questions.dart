@@ -1,42 +1,49 @@
-class Question{
-  String qcategory;
-  String qtext;
-  bool qscore;
+import 'package:my_needs/questions_class.dart';
 
-  Question(this.qcategory, this.qtext, this.qscore);
-}
+List<Question> _list = [
+  //Deficiency needs- triggered by a lack
+  //Physiological Questions
+  Question('Physiological', 'Are you inhaling good quality air today?', false),
+  Question('Physiological',
+      'Do you have access to sufficient amount of water today?', false),
+  Question('Physiological', 'Did you eat enough today?', false),
+  Question('Physiological', 'Do you have a roof over your head today?', false),
+  Question('Physiological', 'Did you have a peaceful slumber?', false),
+  Question('Physiological', 'Does your clothes keep you warm?', false),
+  Question('Physiological', 'Are you feeling productive today?', false),
+  Question('Physiological', 'Are you in good physical health?', false),
 
-class QBank{
-  List<Question> qbank = [
-    Question('Physiological','Air', false),
-    Question('Physiological','Water', false),
-    Question('Physiological','Food', false),
-    Question('Physiological','Shelter', false),
-    Question('Physiological','Sleep', false),
-    Question('Physiological','Clothing', false),
-    Question('Physiological','Reproduction', false),
+  //Safety Questions
+  Question('Safety', 'Do you feel safe?', false),
+  Question('Safety', 'Hows your work today?', false),
+  Question('Safety', 'Are you able to do what you planned to do today?', false),
+  Question('Safety', 'How\'s your health today?', false),
+  Question('Safety', 'Are you financially secured right now?', false),
+  Question('Safety', 'Are you feeling stressed?', false),
+  Question('Safety', 'Do you feel in danger of being injured?', false),
 
-    Question('Safety', 'Personal Security', false),
-    Question('Safety', 'Employment', false),
-    Question('Safety', 'Resources', false),
-    Question('Safety', 'Health', false),
-    Question('Safety', 'Property', false),
+  //Belonging Questions
+  Question('Belong', 'Do you feel lonely today?', false),
+  Question('Belong', 'How are your friends doing?', false),
+  Question('Belong', 'How\'s your relationship with your partner?', false),
+  Question('Belong', 'How\'s your family doing today?', false),
+  Question('Belong', 'How are you catching up with your friends?', false),
+  Question('Belong', 'Do you have someone you can confide in?', false),
 
-    Question('Belong', 'Friendship', false),
-    Question('Belong', 'Intimacy', false),
-    Question('Belong', 'Family', false),
-    Question('Belong', 'Sense of connection', false),
+  //Esteem Questions
+  Question('Esteem', 'Do you think you are respected by everyone around you?',
+      false),
+  Question('Esteem', 'Do you feel beautiful today?', false),
+  Question('Esteem', 'Do you feel powerful today?', false),
+  Question('Esteem', 'Are you appreciated?', false),
+  Question('Esteem', 'How is your fighting spirit today?', false),
+  Question('Esteem', 'Are you able to do what you want to do?', false),
+  Question('Esteem', 'Do you feel independent?', false),
+  Question('Esteem', 'Do you have feel proud of yourself?', false),
 
-    Question('Esteem', 'Respect', false),
-    Question('Esteem', 'Self-Esteem', false),
-    Question('Esteem', 'Status', false),
-    Question('Esteem', 'Recognition', false),
-    Question('Esteem', 'Strength', false),
-    Question('Esteem', 'Freedom', false),
-
-    Question('Actualization','Desire to become the most that one can be', false),
-
-
-
-  ];
-}
+  //Growth needs- triggered by a desire to grow
+  //Actualization Questions
+  Question('Actualization', 'Are you contented with your life today?', false),
+  Question('Actualization', 'Are you working towards becoming your best self?',
+      false)
+];
