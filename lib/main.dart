@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_needs/home.dart';
 import 'package:my_needs/calendar.dart';
 import 'package:my_needs/test.dart';
+import 'package:my_needs/dailyProgress.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,11 +30,11 @@ class MyHomePage extends StatefulWidget {
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
-  }
+}
 
-  class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = [Home(), Calendar(), Test()];
+  final List<Widget> _widgetOptions = [Home(), Calendar(), DailyProgress()];
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -43,41 +44,40 @@ class MyHomePage extends StatefulWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
         title: const Text('MyNeeds'),
-    ),
-    body: Center(
-    child: _widgetOptions.elementAt(_selectedIndex),
-    ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.calendar_today,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.calendar_today,
-              ),
-              label: 'Calendar',
+            label: 'Calendar',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.star,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.flag,
-              ),
-              label: 'Test',
-            ),
-          ],
-          currentIndex: _selectedIndex,
-          selectedItemColor: Colors.yellow,
-          selectedIconTheme: IconThemeData(color: Colors.yellow),
+            label: 'DailyProgress',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.yellow,
+        selectedIconTheme: IconThemeData(color: Colors.yellow),
 
-          unselectedItemColor: Color(0xffCFCBD9),
-          unselectedIconTheme: IconThemeData(color: Color(0xffCFCBD9)),
-          onTap: _onItemTapped,
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
+        unselectedItemColor: Color(0xffCFCBD9),
+        unselectedIconTheme: IconThemeData(color: Color(0xffCFCBD9)),
+        onTap: _onItemTapped,
+        backgroundColor: Theme.of(context).primaryColor,
+      ),
     );
   }
-  }
-
+}

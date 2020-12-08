@@ -47,3 +47,37 @@ List<Question> _list = [
   Question('Actualization', 'Are you working towards becoming your best self?',
       false)
 ];
+
+class QBank {
+  static int _index = 0;
+  static bool finished = false;
+
+  static void inc() {
+    if (_index < (_list.length - 1))
+      _index++;
+    else if (_index == (_list.length - 1)) finished = true;
+  }
+
+  static int qcount() {
+    return _list.length - 1;
+  }
+
+  static String getCategory() {
+    return _list[_index].qcategory;
+  }
+
+  static String getText() {
+    if (_index < (_list.length - 1)) {
+      return _list[++_index].qtext;
+    }
+  }
+
+  static bool getAns() {
+    return _list[_index].qscore;
+  }
+
+  static void reset() {
+    _index = 0;
+    finished = false;
+  }
+}
