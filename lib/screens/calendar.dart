@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:my_needs/json_data.dart';
+import 'package:my_needs/util/json_data.dart';
 
 class Calendar extends StatefulWidget {
   static const String id = 'calendar';
@@ -28,7 +28,8 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     );
     _animationController.forward();
 
-    /**/ _events = {
+    /**/
+    _events = {
       DateTime(2020, 11, 11): ['Actualization'],
       DateTime(2020, 12, 11): ['Esteem'],
       DateTime(2020, 11, 11): ['Belonging'],

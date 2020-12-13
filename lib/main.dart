@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_needs/home.dart';
-import 'package:my_needs/calendar.dart';
-import 'package:my_needs/test.dart';
-import 'package:my_needs/dailyProgress.dart';
+import 'package:my_needs/screens/home.dart';
+import 'package:my_needs/screens/calendar.dart';
+import 'package:my_needs/screens/dailyProgress.dart';
 
 void main() {
   runApp(MyApp());
@@ -19,7 +18,8 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: MyHomePage(),);
+      home: MyHomePage(),
+    );
   }
 }
 
@@ -35,6 +35,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   final List<Widget> _widgetOptions = [Home(), Calendar(), DailyProgress()];
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -72,7 +73,6 @@ class _MyHomePageState extends State<MyHomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.yellow,
         selectedIconTheme: IconThemeData(color: Colors.yellow),
-
         unselectedItemColor: Color(0xffCFCBD9),
         unselectedIconTheme: IconThemeData(color: Color(0xffCFCBD9)),
         onTap: _onItemTapped,

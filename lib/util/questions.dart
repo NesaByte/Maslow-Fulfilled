@@ -1,4 +1,4 @@
-import 'package:my_needs/questions_class.dart';
+import 'package:my_needs/util/questions_class.dart';
 
 List<Question> _list = [
   //Deficiency needs- triggered by a lack

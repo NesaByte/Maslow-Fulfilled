@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
-import 'package:my_needs/questions.dart';
+import 'package:my_needs/util/questions.dart';
 
 class DailyProgress extends StatefulWidget {
   @override
@@ -19,6 +17,7 @@ class DailyProgressState extends State<DailyProgress> {
   }
 
   List<Widget> answersIcon = [];
+
   void navigate(bool ans) {
     setState(() {
       if (QBank.finished == true) {
@@ -92,6 +91,5 @@ class DailyProgressState extends State<DailyProgress> {
                 ),
               )),
     );
-
   }
 }
