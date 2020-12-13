@@ -28,7 +28,6 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     );
     _animationController.forward();
 
-    /**/
     _events = {
       DateTime(2020, 11, 11): ['Actualization'],
       DateTime(2020, 12, 11): ['Esteem'],
