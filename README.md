@@ -11,9 +11,9 @@
  - Offers a general framework people can use to better themselves.
 
 ## Current app
-| Home Page | Calendar Page|
-|:---:|:---:|
-| ![](https://cdn.discordapp.com/attachments/766377851510980628/776188189424484352/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/776188238359822346/unknown.png) |
+| Home Page | Calendar Page| DailyProgress Page |
+|:---:|:---:|:---:|
+| ![](https://cdn.discordapp.com/attachments/766377851510980628/787554271520227338/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/787554355707641876/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/787554428671623218/unknown.png) |
 
 ## Contributors are needed!
 Check out the Issues or make your own issues.
