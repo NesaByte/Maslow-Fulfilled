@@ -13,7 +13,7 @@
 ## Current app
 | Home Page | Calendar Page| DailyProgress Page |
 |:---:|:---:|:---:|
-| ![](https://cdn.discordapp.com/attachments/766377851510980628/787554271520227338/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/787554355707641876/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/787554428671623218/unknown.png) |
+| ![](https://cdn.discordapp.com/attachments/766377851510980628/787554271520227338/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/787556634821132308/unknown.png) | ![](https://cdn.discordapp.com/attachments/766377851510980628/787554428671623218/unknown.png) |
 
 ## Contributors are needed!
 Check out the Issues or make your own issues.
