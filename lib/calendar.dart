@@ -34,26 +34,22 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       DateTime(2020, 11, 11): ['Belonging'],
       DateTime(2020, 11, 11): ['Safety'],
       DateTime(2020, 11, 11): ['Physiological'],
-
       DateTime(2020, 11, 13): ['Actualization'],
       DateTime(2020, 12, 13): ['Esteem'],
       DateTime(2020, 11, 13): ['Belonging'],
       DateTime(2020, 11, 13): ['Safety'],
       DateTime(2020, 11, 13): ['Physiological'],
-
       DateTime(2020, 11, 21): ['Actualization'],
       DateTime(2020, 12, 21): ['Esteem'],
       DateTime(2020, 11, 21): ['Belonging'],
       DateTime(2020, 11, 21): ['Safety'],
       DateTime(2020, 11, 21): ['Physiological'],
-
       DateTime(2020, 11, 30): ['Actualization'],
       DateTime(2020, 12, 30): ['Esteem'],
       DateTime(2020, 11, 30): ['Belonging'],
       DateTime(2020, 11, 30): ['Safety'],
       DateTime(2020, 11, 30): ['Physiological'],
     };
-
   }
 
   @override
@@ -70,17 +66,17 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     });
   }
 
-  void _onVisibleDaysChanged(DateTime first, DateTime last,
-      CalendarFormat format) {
+  void _onVisibleDaysChanged(
+      DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onVisibleDaysChanged');
   }
 
-  void _onCalendarCreated(DateTime first, DateTime last,
-      CalendarFormat format) {
+  void _onCalendarCreated(
+      DateTime first, DateTime last, CalendarFormat format) {
     print('CALLBACK: _onCalendarCreated');
   }
 
-  String testDate(String day){
+  String testDate(String day) {
     return day;
   }
 
@@ -122,8 +118,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         itemCount: dataList.length,
         itemBuilder: (context, i) {
           return _buildUserGrowth(dataList[i]);
-        }
-    );
+        });
   }
 
   Widget _buildUserGrowth(Map<String, dynamic> data) {
@@ -132,22 +127,18 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
     if (pickedDay != "") {
       sdate = pickedDay.substring(0, 10);
-    }
-    else if (_selectedDay != null){
+    } else if (_selectedDay != null) {
       date = _selectedDay.toString();
       sdate = date.substring(0, 10);
     }
 
-
-    return Column( children: <Widget>[
+    return Column(
+      children: <Widget>[
         if (sdate == data["mdate"])
           new Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
             child: new LinearPercentIndicator(
-              width: MediaQuery
-                  .of(context)
-                  .size
-                  .width - 140,
+              width: MediaQuery.of(context).size.width - 140,
               animation: true,
               lineHeight: 20.0,
               center: new Text(data["name"]),
@@ -158,9 +149,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
               progressColor: colorConvert(data["name"]),
             ),
           ),
-
-        ],
-
+      ],
     );
   }
 
@@ -172,9 +161,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       //holidays: _holidays,
       startingDayOfWeek: StartingDayOfWeek.sunday,
       calendarStyle: CalendarStyle(
-        selectedColor: Theme
-            .of(context)
-            .primaryColor,
+        selectedColor: Theme.of(context).primaryColor,
         todayColor: Colors.pinkAccent,
         markersColor: Colors.brown[700],
         outsideDaysVisible: false,
@@ -182,11 +169,9 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       ),
       headerStyle: HeaderStyle(
         formatButtonTextStyle:
-        TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
+            TextStyle().copyWith(color: Colors.white, fontSize: 15.0),
         formatButtonDecoration: BoxDecoration(
-          color: Theme
-              .of(context)
-              .primaryColor,
+          color: Theme.of(context).primaryColor,
           borderRadius: BorderRadius.circular(16.0),
         ),
       ),
