@@ -24,7 +24,7 @@ class HomeState extends State<Home> {
                 return Text("no data");
               }
               var myData = json.decode(snapshot.data);
-              print(myData);
+              //print(myData);
               return Center(
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
