@@ -59,7 +59,7 @@ class QBank {
   }
 
   static int qcount() {
-    return _list.length - 1;
+    return _list.length;
   }
 
   static String getCategory() {
