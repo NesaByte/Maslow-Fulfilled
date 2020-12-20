@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_needs/screens/home.dart';
 import 'package:my_needs/screens/calendar.dart';
 import 'package:my_needs/screens/dailyProgress.dart';
+import 'package:my_needs/screens/test.dart';
 
 class BtmNavBar extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class BtmNavBar extends StatefulWidget {
 
 class BtmNavBarState extends State<BtmNavBar> {
   int _selectedIndex = 0;
-  final List<Widget> _widgetOptions = [Home(), Calendar(), DailyProgress()];
+  final List<Widget> _widgetOptions = [Home(), Calendar(), Test()];
 
   void _onItemTapped(int index) {
     setState(() {
