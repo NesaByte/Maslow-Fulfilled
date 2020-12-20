@@ -16,9 +16,10 @@ class dailyProgress {
   DateTime SDate     = new DateTime.now();
 
   dailyProgress.fromJson(Map<String, dynamic> parsedJSON, String id)
-      : SActualization = parsedJSON['SActualization'],
-        SEsteem        = parsedJSON['SEsteem'],
-        SBelonging     = parsedJSON['SBelonging'],
-        SSafety        = parsedJSON['SSafety'],
-        SDate          = parsedJSON['SDate'].toDate();
+      : SActualization = parsedJSON['sActualization'],
+        SEsteem        = parsedJSON['sEsteem'],
+        SBelonging     = parsedJSON['sBelonging'],
+        SSafety        = parsedJSON['sSafety'],
+        SPhysiological = parsedJSON['sPhysiological'],
+        SDate          = parsedJSON['date'].toDate();
 }
