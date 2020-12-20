@@ -26,7 +26,9 @@ dependencies:
   table_calendar: ^2.3.0
   percent_indicator: "^2.1.7+2"
   rflutter_alert: ^1.1.0
-
+  cloud_firestore: ^0.14.0+2
+  firebase_auth: ^0.18.0+1
+  provider: ^4.3.2+2
 
 
   # The following adds the Cupertino Icons font to your application.

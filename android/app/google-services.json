@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "658040644512",
+    "project_id": "maslow-fullfilled",
+    "storage_bucket": "maslow-fullfilled.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658040644512:android:b620ee43d0040b69a83ac5",
+        "android_client_info": {
+          "package_name": "com.example.my_needs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658040644512-njkp9m8ffl3vv5ggnd32ef5ho8u8n6st.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.my_needs",
+            "certificate_hash": "ce99cf633f4b8d9afeaf8e49cf89716a7c2138b4"
+          }
+        },
+        {
+          "client_id": "658040644512-kfmkhjhonnq6j5qrmb3rmp6g51j5f7l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1zdgcscPPCEQOo7Mbmf7a6OOuP8cdRm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658040644512-kfmkhjhonnq6j5qrmb3rmp6g51j5f7l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
