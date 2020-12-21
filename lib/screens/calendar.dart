@@ -57,13 +57,27 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
     print('CALLBACK: _onCalendarCreated');
   }
 
-  String testDate(String day) {
-    return day;
+  void _getDates(List<DailyProgress> dailyProgress) async {
+    print('CALLBACK: _getDates');
+
+    _events = {};
+    for (int index = 0; index < dailyProgress.length; index++) {
+      int day = dailyProgress[index].sDate.day;
+      int month = dailyProgress[index].sDate.month;
+      int year = dailyProgress[index].sDate.year;
+
+      try {
+        _events.addAll({
+          DateTime(year, month, day): ["Flag"]
+        });
+      } catch (e) {
+        print(e);
+      }
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    //List goals = Provider.of<List<Goal>>(context);
 
     User user = Provider.of<User>(context);
 
@@ -72,8 +86,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<DailyProgress> dailyProgress = snapshot.data;
-            //_getDates(dailyProgress);
-            //trims the list
+            _getDates(dailyProgress);
             dailyProgress.removeWhere((element) =>
             !(pickedDay.day == element.sDate.day &&
                 pickedDay.month == element.sDate.month &&
