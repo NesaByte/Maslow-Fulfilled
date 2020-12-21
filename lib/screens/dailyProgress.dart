@@ -46,7 +46,7 @@ class DailyProgressState extends State<DailyProgress> {
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
                               Card(
-                                color: Color(0xFFF9B0A0),
+                                color: Color(0xFFF9E79F),
                                 child: Column(children: <Widget>[
                                   Padding(
                                     padding: const EdgeInsets.all(4.0),
