@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:my_needs/util/json_data.dart';
+import 'package:provider/provider.dart';
+import 'package:my_needs/firebase/models/dailyProgress_class.dart';
+import 'package:my_needs/firebase/models/dailyProgress_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Calendar extends StatefulWidget {
   static const String id = 'calendar';
@@ -14,7 +18,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   CalendarController _calendarController;
   AnimationController _animationController;
   final _selectedDay = DateTime.now();
-  String pickedDay = "";
+  DateTime pickedDay = DateTime.now();
   Map<DateTime, List> _events;
 
   @override
@@ -27,29 +31,6 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       duration: const Duration(milliseconds: 400),
     );
     _animationController.forward();
-
-    _events = {
-      DateTime(2020, 11, 11): ['Actualization'],
-      DateTime(2020, 11, 11): ['Esteem'],
-      DateTime(2020, 11, 11): ['Belonging'],
-      DateTime(2020, 11, 11): ['Safety'],
-      DateTime(2020, 11, 11): ['Physiological'],
-      DateTime(2020, 11, 13): ['Actualization'],
-      DateTime(2020, 11, 13): ['Esteem'],
-      DateTime(2020, 11, 13): ['Belonging'],
-      DateTime(2020, 11, 13): ['Safety'],
-      DateTime(2020, 11, 13): ['Physiological'],
-      DateTime(2020, 11, 21): ['Actualization'],
-      DateTime(2020, 11, 21): ['Esteem'],
-      DateTime(2020, 11, 21): ['Belonging'],
-      DateTime(2020, 11, 21): ['Safety'],
-      DateTime(2020, 11, 21): ['Physiological'],
-      DateTime(2020, 11, 30): ['Actualization'],
-      DateTime(2020, 11, 30): ['Esteem'],
-      DateTime(2020, 11, 30): ['Belonging'],
-      DateTime(2020, 11, 30): ['Safety'],
-      DateTime(2020, 11, 30): ['Physiological'],
-    };
   }
 
   @override
@@ -62,7 +43,7 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
   void _onDaySelected(DateTime day, List events, List Holiday) {
     print('CALLBACK: _onDaySelected' + day.toString());
     setState(() {
-      pickedDay = day.toString();
+      pickedDay = day;
     });
   }
 
@@ -82,15 +63,48 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        //crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          _buildTableCalendar(),
-          Expanded(child: _buildBody()),
-        ],
-      ),
-    );
+    //List goals = Provider.of<List<Goal>>(context);
+
+    User user = Provider.of<User>(context);
+
+    return StreamBuilder<List<DailyProgress>>(
+        stream: DailyProgressDatabase(user.uid).getDailyProgressStream(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            List<DailyProgress> dailyProgress = snapshot.data;
+            //_getDates(dailyProgress);
+            //trims the list
+            dailyProgress.removeWhere((element) =>
+            !(pickedDay.day == element.sDate.day &&
+                pickedDay.month == element.sDate.month &&
+                pickedDay.year == element.sDate.year));
+
+            return new Scaffold(
+              appBar: new AppBar(
+                automaticallyImplyLeading: false,
+                centerTitle: true,
+                title: Text("Calendar"),
+              ),
+              body: Column(
+                //crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _buildTableCalendar(),
+                  new Expanded(
+                    //child: _buildCard(),
+                    child: new ListView.builder(
+                      itemCount: dailyProgress.length,
+                      itemBuilder: (BuildContext ctxt, int index) => Center(
+                        child: _buildUserGrowth(index, dailyProgress),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          } else {
+            return Text("No Goals Retrieved");
+          }
+        });
   }
 
   Color colorConvert(String name) {
@@ -108,49 +122,90 @@ class CalendarState extends State<Calendar> with TickerProviderStateMixin {
       return Color(0xFF000000);
   }
 
-  Widget _buildBody() {
-    return _buildList(data_test);
-  }
-
-  Widget _buildList(List<Map<String, dynamic>> dataList) {
-    return ListView.builder(
-        padding: const EdgeInsets.all(18.0),
-        itemCount: dataList.length,
-        itemBuilder: (context, i) {
-          return _buildUserGrowth(dataList[i]);
-        });
-  }
-
-  Widget _buildUserGrowth(Map<String, dynamic> data) {
-    String date;
-    String sdate;
-
-    if (pickedDay != "") {
-      sdate = pickedDay.substring(0, 10);
-    } else if (_selectedDay != null) {
-      date = _selectedDay.toString();
-      sdate = date.substring(0, 10);
-    }
-
-    return Column(
-      children: <Widget>[
-        if (sdate == data["mdate"])
+  Widget _buildUserGrowth(int index, List<DailyProgress> dailyProgress) {
+    if (pickedDay.day == dailyProgress[index].sDate.day &&
+        pickedDay.month == dailyProgress[index].sDate.month &&
+        pickedDay.year == dailyProgress[index].sDate.year)
+      return Column(
+        children: <Widget>[
           new Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
             child: new LinearPercentIndicator(
               width: MediaQuery.of(context).size.width - 140,
               animation: true,
               lineHeight: 20.0,
-              center: new Text(data["name"]),
+              center: new Text("Actualization"),
               animationDuration: 2500,
-              percent: int.parse(data["score"].toString()) / 100,
-              trailing: Text(" " + data["score"].toString() + "% "),
+              percent: dailyProgress[index].sActualization / 100,
+              trailing: Text(
+                  " " + dailyProgress[index].sActualization.toString() + "% "),
               linearStrokeCap: LinearStrokeCap.roundAll,
-              progressColor: colorConvert(data["name"]),
+              progressColor: colorConvert("Actualization"),
             ),
           ),
-      ],
-    );
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
+            child: new LinearPercentIndicator(
+              width: MediaQuery.of(context).size.width - 140,
+              animation: true,
+              lineHeight: 20.0,
+              center: new Text("Esteem"),
+              animationDuration: 2500,
+              percent: dailyProgress[index].sEsteem / 100,
+              trailing:
+                  Text(" " + dailyProgress[index].sEsteem.toString() + "% "),
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              progressColor: colorConvert("Esteem"),
+            ),
+          ),
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
+            child: new LinearPercentIndicator(
+              width: MediaQuery.of(context).size.width - 140,
+              animation: true,
+              lineHeight: 20.0,
+              center: new Text("Belonging"),
+              animationDuration: 2500,
+              percent: dailyProgress[index].sBelonging / 100,
+              trailing:
+                  Text(" " + dailyProgress[index].sBelonging.toString() + "% "),
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              progressColor: colorConvert("Belonging"),
+            ),
+          ),
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
+            child: new LinearPercentIndicator(
+              width: MediaQuery.of(context).size.width - 140,
+              animation: true,
+              lineHeight: 20.0,
+              center: new Text("Safety"),
+              animationDuration: 2500,
+              percent: dailyProgress[index].sSafety / 100,
+              trailing:
+                  Text(" " + dailyProgress[index].sSafety.toString() + "% "),
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              progressColor: colorConvert("Safety"),
+            ),
+          ),
+          new Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 3),
+            child: new LinearPercentIndicator(
+              width: MediaQuery.of(context).size.width - 140,
+              animation: true,
+              lineHeight: 20.0,
+              center: new Text("Physiological"),
+              animationDuration: 2500,
+              percent: dailyProgress[index].sPhysiological / 100,
+              trailing: Text(
+                  " " + dailyProgress[index].sPhysiological.toString() + "% "),
+              linearStrokeCap: LinearStrokeCap.roundAll,
+              progressColor: colorConvert("Physiological"),
+            ),
+          ),
+        ],
+      );
+    return new Column();
   }
 
   // Simple TableCalendar configuration (using Styles)
