@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import 'package:my_needs/firebase/models/actualization_database.dart';
-
 class DailyProgress extends StatefulWidget {
   @override
   DailyProgressState createState() => DailyProgressState();
@@ -17,20 +15,9 @@ class DailyProgressState extends State<DailyProgress> {
 
   int _radioValue1 = -1;
   int correctScore = 0;
-  int _radioValue2 = -1;
-  int _radioValue3 = -1;
-  int _radioValue4 = -1;
-  int _radioValue5 = -1;
 
   @override
   Widget build(BuildContext context) {
-    User user = Provider.of<User>(context);
-    ActualizationDatabase db = ActualizationDatabase();
-    final DateTime now = DateTime.now();
-    final DateFormat formatter = DateFormat.yMMMMd('en_US');
-    final String todaydate = formatter.format(now);
-    final String todayweekdate = DateFormat('EEEE').format(DateTime.now());
-    print(todaydate);
 
     return StreamBuilder<QuerySnapshot>(
         stream: stream,
@@ -146,14 +133,11 @@ class DailyProgressState extends State<DailyProgress> {
 
       switch (_radioValue1) {
         case 0:
-        //Fluttertoast.showToast(msg: 'Correct !',toastLength: Toast.LENGTH_SHORT);
           correctScore++;
           break;
         case 1:
-        //Fluttertoast.showToast(msg: 'Try again !',toastLength: Toast.LENGTH_SHORT);
           break;
         case 2:
-        //Fluttertoast.showToast(msg: 'Try again !',toastLength: Toast.LENGTH_SHORT);
           break;
       }
     });
