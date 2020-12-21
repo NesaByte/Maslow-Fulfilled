@@ -65,7 +65,7 @@ class DailyProgressState extends State<DailyProgress> {
                                       Transform.scale(
                                         scale: 2,
                                         child: new Radio(
-                                          activeColor: Colors.red,
+                                          activeColor: Color(0xFFAB1C0F),
                                           value: 0,
                                           groupValue: _radioValue1,
                                           onChanged: _handleRadioValueChange1,
@@ -100,7 +100,7 @@ class DailyProgressState extends State<DailyProgress> {
                                       Transform.scale(
                                         scale: 2,
                                         child: new Radio(
-                                          activeColor: Colors.green,
+                                          activeColor: Color(0xFF125F20),
                                           value: 4,
                                           groupValue: _radioValue1,
                                           onChanged: _handleRadioValueChange1,
@@ -138,6 +138,10 @@ class DailyProgressState extends State<DailyProgress> {
         case 1:
           break;
         case 2:
+          break;
+        case 3:
+          break;
+        case 4:
           break;
       }
     });
