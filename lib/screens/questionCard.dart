@@ -16,6 +16,13 @@ class QuestionCardState extends State<QuestionCard> {
   QuestionCardState(this.currentDocument);
   int _radioValue1 = -1;
 
+  //total score per category:
+  int actualizationTotal = 0;
+  int esteemTotal = 0;
+  int belongingTotal = 0;
+  int safetyTotal = 0;
+  int physiologicalTotal = 0;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -43,19 +50,20 @@ class QuestionCardState extends State<QuestionCard> {
                 groupValue: _radioValue1,
                 onChanged: (int value) {
                   setState(() {
+                    print("cat: " + currentDocument["Category"]);
+
+                    String category = "category";
+                    if(currentDocument["Category"] == "Safety"){
+                      print("cattttt: " + currentDocument["Category"]);
+
+                    }
                     _radioValue1 = value;
 
                     switch (_radioValue1) {
                       case 0:
-                        //correctScore++;
-                        break;
-                      case 1:
-                        break;
-                      case 2:
-                        break;
-                      case 3:
-                        break;
-                      case 4:
+                      //correctScore++;
+                        print("case 0: " + currentDocument["Category"]);
+                        _addSafety(currentDocument["Category"], _radioValue1);
                         break;
                     }
                   });
@@ -73,16 +81,9 @@ class QuestionCardState extends State<QuestionCard> {
                     _radioValue1 = value;
 
                     switch (_radioValue1) {
-                      case 0:
-                        // correctScore++;
-                        break;
                       case 1:
-                        break;
-                      case 2:
-                        break;
-                      case 3:
-                        break;
-                      case 4:
+                        print("case 1: " + currentDocument["Category"]);
+                        _addSafety(currentDocument["Category"], _radioValue1);
                         break;
                     }
                   });
@@ -99,16 +100,9 @@ class QuestionCardState extends State<QuestionCard> {
                     _radioValue1 = value;
 
                     switch (_radioValue1) {
-                      case 0:
-                        //   correctScore++;
-                        break;
-                      case 1:
-                        break;
                       case 2:
-                        break;
-                      case 3:
-                        break;
-                      case 4:
+                        print("case 2: " + currentDocument["Category"]);
+                        _addSafety(currentDocument["Category"], _radioValue1);
                         break;
                     }
                   });
@@ -126,16 +120,9 @@ class QuestionCardState extends State<QuestionCard> {
                     _radioValue1 = value;
 
                     switch (_radioValue1) {
-                      case 0:
-                        // correctScore++;
-                        break;
-                      case 1:
-                        break;
-                      case 2:
-                        break;
                       case 3:
-                        break;
-                      case 4:
+                        print("case 3: " + currentDocument["Category"]);
+                        _addSafety(currentDocument["Category"], _radioValue1);
                         break;
                     }
                   });
@@ -153,16 +140,9 @@ class QuestionCardState extends State<QuestionCard> {
                     _radioValue1 = value;
 
                     switch (_radioValue1) {
-                      case 0:
-                        //  correctScore++;
-                        break;
-                      case 1:
-                        break;
-                      case 2:
-                        break;
-                      case 3:
-                        break;
                       case 4:
+                        print("case 4: " + currentDocument["Category"]);
+                        _addSafety(currentDocument["Category"], _radioValue1);
                         break;
                     }
                   });
@@ -180,5 +160,34 @@ class QuestionCardState extends State<QuestionCard> {
         ),
       ]),
     );
+  }
+
+  void _addSafety(String cat, int answer){
+
+    if(cat == "Actualization"){
+      actualizationTotal+=answer;
+      print("cat: " + cat + " : "+actualizationTotal.toString());
+
+    }else if(cat == "Esteem"){
+      esteemTotal+=answer;
+      print("cat: " + cat + " : "+esteemTotal.toString());
+
+    }else if(cat == "Belonging"){
+      belongingTotal+=answer;
+      print("cat: " + cat + " : "+belongingTotal.toString());
+
+    }else if(cat == "Safety"){
+      safetyTotal+=answer;
+      print("cat: " + cat + " : "+safetyTotal.toString());
+
+    }else if(cat == "Physiological"){
+      physiologicalTotal+=answer;
+      print("cat: " + cat + ": "+physiologicalTotal.toString());
+
+    }else{
+      print("Category: " + cat);
+    }
+
+
   }
 }
