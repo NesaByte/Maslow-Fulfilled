@@ -14,10 +14,8 @@ class Home extends StatefulWidget {
 }
 
 class HomeState extends State<Home> {
-
   @override
   Widget build(BuildContext context) {
-
     User user = Provider.of<User>(context);
     DailyProgressDatabase db = DailyProgressDatabase(user.uid);
 
@@ -36,8 +34,7 @@ class HomeState extends State<Home> {
                 title: Text(
                   "Happy Day",
                   textAlign: TextAlign.center,
-                  style:
-                  TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35.0),
                 ),
               ),
               body: ListView.builder(
@@ -46,6 +43,12 @@ class HomeState extends State<Home> {
                   child: _buildCard(index, dailyProgress),
                 ),
               ),
+              floatingActionButton: FloatingActionButton(
+                  child: Icon(Icons.add),
+                  onPressed: () {
+                    db.addUserDailyProgress(
+                        10, 15, 50, 38, 100, new DateTime.now());
+                  }),
             );
           } else {
             return Column(
@@ -55,11 +58,11 @@ class HomeState extends State<Home> {
             );
           }
         });
-
   }
 
   Widget _buildCard(int index, List<DailyProgress> dailyProgress) {
-    print("test sActualization: " + dailyProgress[index].sActualization.toString());
+    print("test sActualization: " +
+        dailyProgress[index].sActualization.toString());
 
     double LH = 50.0;
 
@@ -68,8 +71,7 @@ class HomeState extends State<Home> {
         children: <Widget>[
           //Actualization
           Padding(
-            padding: EdgeInsets.symmetric(
-                vertical: 70.0),
+            padding: EdgeInsets.symmetric(vertical: 70.0),
           ),
           Padding(
             padding: EdgeInsets.symmetric(
@@ -147,8 +149,7 @@ class HomeState extends State<Home> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: 150.0, vertical: 20.0),
+            padding: EdgeInsets.symmetric(horizontal: 150.0, vertical: 20.0),
           ),
           Text(
             "My Needs",
