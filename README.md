@@ -1,6 +1,6 @@
 # MASLOW-FULLFILLED
 
-## What is Moslow's Hierarchy of needs?
+## What is Maslow's Hierarchy of needs?
 - "A Theory of Human Motivation" : Maslow’s theory encompasses his observations and ideas on human needs and motivation.
 ![needs](https://2ij7hk3p1vra3uhoox411gzf-wpengine.netdna-ssl.com/wp-content/uploads/2020/04/maslow-1024x724.jpg)
 
@@ -20,7 +20,7 @@ Check out the Issues or make your own issues.
 
 ### Step 1: Fork and clone the repository
 ```
-git clone https://github.com/'your username'/Moslow_MyNeeds.git
+git clone https://github.com/'your username'/Maslow-FullFilled.git
 ```
 ### Step 2: Run the app
 ```sh
